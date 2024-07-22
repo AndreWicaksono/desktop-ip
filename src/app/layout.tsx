@@ -3,6 +3,7 @@ import { Gabarito } from "next/font/google";
 import "./globals.css";
 
 import NavigationBar from "@/components/molecules/NavigationBar";
+import StyledComponentsRegistry from "@/lib/registry";
 
 const gabarito = Gabarito({ subsets: ["latin"] });
 
@@ -25,7 +26,8 @@ export default function RootLayout({
             { label: "Home", props: { href: "/" } },
           ]}
         />
-        {children}
+
+        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
       </body>
     </html>
   );

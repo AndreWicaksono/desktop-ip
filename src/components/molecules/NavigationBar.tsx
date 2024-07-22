@@ -13,7 +13,7 @@ const NavigationBar: FC<
   const classNameMobile = "inset-x-0 px-4 py-[6px]";
   const classNameDesktop =
     "lg:h-[72px] lg:inset-x-12 lg:px-12 lg:py-4 lg:rounded-lg lg:top-[18px] lg:border-[1px] lg:divide-solid lg:border-[#0249A633]";
-  const defaultClassName = `bg-[#041836] text-[#FFB400] fixed flex font-semibold items-center justify-between text-base top-0 z-[1] ${classNameMobile} ${classNameDesktop}`;
+  const defaultClassName = `bg-[#041836] text-[#FFB400] fixed flex font-semibold items-center justify-between text-base top-0 z-10 ${classNameMobile} ${classNameDesktop}`;
 
   return (
     <nav
