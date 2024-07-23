@@ -1,3 +1,4 @@
+import Footer from "@/components/organisms/Footer/Footer";
 import Banner from "@/components/organisms/Slider/Banner/Banner";
 import ListCard from "@/components/organisms/Slider/ListCard/ListCard";
 import Image from "next/image";
@@ -7,9 +8,9 @@ export default function Home() {
     <>
       <Banner classNameContainer="px-4 lg:px-0 pb-[34px] lg:pb-[109px] bg-[#041836]" />
 
-      <main className="bg-[#041836] flex min-h-screen flex-col items-center justify-between">
+      <main className="bg-[#041836] flex min-h-screen flex-col items-center">
         <ListCard
-          classNameContainer="px-4 pb-3 lg:pb-[109px] lg:pl-12 w-full"
+          classNameContainer="px-4 mb-3 lg:mb-[109px] lg:pl-12 w-full"
           classNameHeading="text-white lg:hidden"
           heading="Category 1"
           slides={[
@@ -208,6 +209,7 @@ export default function Home() {
           </a>
         </div> */}
       </main>
+      <Footer className="bg-[#041836] lg:px-12" />
     </>
   );
 }
