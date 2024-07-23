@@ -13,7 +13,9 @@ import BannerBase, {
 import Button from "@/components/molecules/Button";
 import TagLabel from "@/components/atoms/TagLabel";
 
-const Banner: FC = () => {
+const Banner: FC<{ classNameContainer?: string }> = ({
+  classNameContainer,
+}) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [loaded, setLoaded] = useState(false);
   const [refSlider, refInstance] = useKeenSlider<HTMLDivElement>({
@@ -28,7 +30,7 @@ const Banner: FC = () => {
 
   return (
     <>
-      <div className="px-4">
+      <div className={classNameContainer}>
         <BannerBase
           ref={refSlider}
           className="keen-slider pt-14 lg:pt-0 h-[500px] lg:h-[787.5px]"
@@ -121,7 +123,7 @@ const Banner: FC = () => {
           <BannerOverlayGradientBase className="rounded-lg lg:rounded-none" />
 
           {loaded && refInstance.current && (
-            <Dots className="hidden lg:flex" cssDefinedByClass={["display"]}>
+            <Dots className="hidden lg:flex" $cssDefinedByClass={["display"]}>
               {Array.from(
                 Array(refInstance.current.track.details.slides.length).keys()
               ).map((idx) => {

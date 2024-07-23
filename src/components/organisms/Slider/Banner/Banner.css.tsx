@@ -97,14 +97,14 @@ export const BannerOverlayGradientBase = styled.div`
   }
 `;
 
-export const Dots = styled.div<{ cssDefinedByClass?: Array<string> }>`
+export const Dots = styled.div<{ $cssDefinedByClass?: Array<string> }>`
   position: absolute;
   left: 66px;
   bottom: 53.5px;
   z-index: 2;
 
-  ${({ cssDefinedByClass }) =>
-    cssDefinedByClass && cssDefinedByClass.includes("display")
+  ${({ $cssDefinedByClass }) =>
+    $cssDefinedByClass && $cssDefinedByClass.includes("display")
       ? ""
       : "display: flex;"}
 
