@@ -1,7 +1,6 @@
 import Footer from "@/components/organisms/Footer/Footer";
 import Banner from "@/components/organisms/Slider/Banner/Banner";
 import ListCard from "@/components/organisms/Slider/ListCard/ListCard";
-import Image from "next/image";
 
 export default function Home() {
   return (

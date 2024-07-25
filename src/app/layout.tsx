@@ -24,6 +24,34 @@ export default function RootLayout({
           menus={[
             { label: "channelName", props: { href: "#" } },
             { label: "Home", props: { href: "/" } },
+            {
+              label: (
+                <button className="inline-flex items-center" type="button">
+                  <span className="pe-[11px]">Browse</span>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    alt="Caret Down"
+                    height={16}
+                    width={10}
+                    src="/svg/caret-down.svg"
+                  />
+                </button>
+              ),
+            },
+            {
+              label: (
+                <button className="inline-flex items-center" type="button">
+                  <span className="pe-[11px]">My Library</span>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    alt="Caret Down"
+                    height={16}
+                    width={10}
+                    src="/svg/caret-down.svg"
+                  />
+                </button>
+              ),
+            },
           ]}
         />
 
