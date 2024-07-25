@@ -5,17 +5,19 @@ import { DetailedHTMLProps, FC, HTMLAttributes, useState } from "react";
 import Link from "next/link";
 import styled from "styled-components";
 
-import InputWithLabel from "./Input";
+import InputWithLabel from "@/components/molecules/Input";
+import { login } from "@/lib/actions/POST/auth";
 
 const FormLogin: FC<
   DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
 > = ({ ...propsOfBaseComponent }) => {
   const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
   return (
     <FormLoginBase className="px-14" {...propsOfBaseComponent}>
       <div className="relative h-full w-full flex items-center justify-center">
-        <div className="p-8">
+        <form action={login} className="p-8">
           <Heading className="pb-6">Sign In</Heading>
 
           <InputWithLabel
@@ -28,7 +30,21 @@ const FormLogin: FC<
             value={email}
           />
 
-          <Button className="mb-6 py-2 font-semibold" disabled type="button">
+          <InputWithLabel
+            classNameContainer="mb-6"
+            label="Password"
+            name="password"
+            onChange={(e) => setPassword(e.currentTarget.value)}
+            placeholder="Enter password"
+            type="password"
+            value={password}
+          />
+
+          <Button
+            className="mb-6 py-2 font-semibold"
+            disabled={email.length < 1 && password.length < 1}
+            type="submit"
+          >
             Sign In
           </Button>
 
@@ -42,7 +58,7 @@ const FormLogin: FC<
               <LinkNavigation href="#">Sign Up</LinkNavigation>
             </p>
           </div>
-        </div>
+        </form>
       </div>
     </FormLoginBase>
   );

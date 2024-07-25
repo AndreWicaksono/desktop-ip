@@ -1,6 +1,10 @@
 import FormLogin from "@/components/molecules/FormLogin";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
 export default function PageLogin() {
+  if (cookies().has("auth")) redirect("/");
+
   return (
     <>
       <main className="relative">
