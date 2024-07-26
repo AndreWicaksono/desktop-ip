@@ -1,6 +1,5 @@
 export default async function getPeople() {
-  // This url should be stored within .env file
-  const res = await fetch("https://swapi.dev/api/people/1/");
+  const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/people/1/");
 
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary

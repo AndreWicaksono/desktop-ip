@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, useState } from "react";
+import { FC, ReactNode, useState } from "react";
 
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
@@ -11,11 +11,16 @@ import BannerBase, {
   OverlayParagraphWithEllipsis,
 } from "./Banner.css";
 import Button from "@/components/molecules/Button";
-import TagLabel from "@/components/atoms/TagLabel";
 
-const Banner: FC<{ classNameContainer?: string }> = ({
-  classNameContainer,
-}) => {
+const Banner: FC<{
+  classNameContainer?: string;
+  slides: Array<{
+    heading: string;
+    paragraph: string;
+    photo: string;
+    tag?: ReactNode;
+  }>;
+}> = ({ classNameContainer, slides }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [loaded, setLoaded] = useState(false);
   const [refSlider, refInstance] = useKeenSlider<HTMLDivElement>({
@@ -35,24 +40,15 @@ const Banner: FC<{ classNameContainer?: string }> = ({
           ref={refSlider}
           className="keen-slider pt-14 lg:pt-0 h-[500px] lg:h-[787.5px]"
         >
-          <div className="keen-slider__slide number-slide1 rounded-lg lg:rounded-none">
-            1
-          </div>
-          <div className="keen-slider__slide number-slide2 rounded-lg lg:rounded-none">
-            2
-          </div>
-          <div className="keen-slider__slide number-slide3 rounded-lg lg:rounded-none">
-            3
-          </div>
-          <div className="keen-slider__slide number-slide4 rounded-lg lg:rounded-none">
-            4
-          </div>
-          <div className="keen-slider__slide number-slide5 rounded-lg lg:rounded-none">
-            5
-          </div>
-          <div className="keen-slider__slide number-slide6 rounded-lg lg:rounded-none">
-            6
-          </div>
+          {slides.map((slide) => (
+            <div
+              className="keen-slider__slide rounded-lg lg:rounded-none"
+              key={slide.heading}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              {<img alt={`Image of ${slide.heading}`} src={slide.photo} />}
+            </div>
+          ))}
         </BannerBase>
       </div>
 
@@ -60,29 +56,13 @@ const Banner: FC<{ classNameContainer?: string }> = ({
         <div className="relative px-[26px] pb-[26px] lg:p-0 h-[500px] lg:h-full w-100 lg:w-[787px] flex items-end lg:items-center lg:pl-12">
           <div className="max-w-full lg:max-w-[418px] relative text-white z-[5]">
             <h3 className="pb-3 lg:pb-4 leading-[32.11px] lg:leading-[52.5px] text-[25.69px] lg:text-[42px] lg:pb-4">
-              Video Title Video Title Video Title Video Title
+              {slides[currentSlide].heading}
             </h3>
 
-            <div className="lg:block pb-4 lg:text-[rgba(255,_255,_255,_66%)]">
-              <TagLabel className="text-xs lg:text-base font-medium lg:font-normal p-[6px] lg:p-0 mr-[14px] lg:mr-0 radius-[2.4px] text-[#FFE546] lg:text-[rgba(255,_255,_255,_66%)] bg-[#0249A6] lg:bg-transparent">
-                2022
-              </TagLabel>{" "}
-              <span className="hidden lg:inline"> | </span>
-              <TagLabel className="text-xs lg:text-base font-medium lg:font-normal p-[6px] lg:p-0 mr-[14px] lg:mr-0 radius-[2.4px] text-[#FFE546] lg:text-[rgba(255,_255,_255,_66%)] bg-[#0249A6] lg:bg-transparent">
-                2H 23m
-              </TagLabel>
-              <TagLabel className="text-xs lg:text-base font-medium lg:font-normal lg:hidden p-[6px] mr-[14px] radius-[2.4px] text-[#FFE546] lg:text-[rgba(255,_255,_255,_66%)] bg-[#0249A6] lg:bg-transparent">
-                Action
-              </TagLabel>
-            </div>
+            {slides[currentSlide].tag}
 
             <OverlayParagraphWithEllipsis className="mb-3 lg:mb-4 leading-[15px] text-xs lg:leading-5 lg:text-base lg:pb-4 text-[rgba(255,_255,_255,_66%)]">
-              Soda and Gembira are two best friends who have a lot in common.
-              Their friendship begins to fall apart when they meet Jennie, a
-              beautiful woman who is also an environmental activist. They were
-              both interested and tried to win Jennie &apos s heart. However,
-              Jennie did not choose one of the two and decided to remain
-              friends.
+              {slides[currentSlide].paragraph}
             </OverlayParagraphWithEllipsis>
 
             <div className="flex lg:contents">

@@ -1,11 +1,11 @@
+import BannerFilms from "@/components/organisms/ComposedAsFeatures/Banner/BannerFilms";
 import Footer from "@/components/organisms/Footer/Footer";
-import Banner from "@/components/organisms/Slider/Banner/Banner";
 import ListCard from "@/components/organisms/Slider/ListCard/ListCard";
 
 export default function Home() {
   return (
     <>
-      <Banner classNameContainer="px-4 lg:px-0 pb-[34px] lg:pb-[109px] bg-[#041836]" />
+      <BannerFilms />
 
       <main className="bg-[#041836] flex min-h-screen flex-col items-center">
         <ListCard

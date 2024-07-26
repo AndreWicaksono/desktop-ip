@@ -14,6 +14,14 @@ const BannerBase = styled.div`
     max-height: 100vh;
   }
 
+  img {
+    height: 100%;
+    width: 100%;
+
+    background-repeat: no-repeat;
+    object-fit: cover;
+  }
+
   .number-slide1 {
     background: rgb(64, 175, 255);
     background: linear-gradient(
